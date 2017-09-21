@@ -1,0 +1,41 @@
+<table class="table table-hover table-bordered">
+  <tr>
+    <th>Product Name</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  <tbody class='products'>
+    <% if @cart_items.present? %>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= cart_item.product.name %>
+            <% if cart_item.price != cart_item.product.price %>
+              <span class="danger">agufdagdh</span>
+            <% end %>
+          </td>
+          <td>
+            <%= cart_item.quantity %>
+          </td>
+          <td><%= cart_item.price %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="2" class="text-right">
+          Total Price:
+        </td>
+        <td colspan="2" class='total-price'>
+          <%= total_price %>
+        </td>
+      </tr>
+    <% else %>
+      <tr>
+        <td colspan="4" class="text-center">Cart is empty</td>
+      </tr>
+    <% end %>    
+  </tbody>
+</table>
+<div class="row pull-right">
+  <%= link_to "Confirm", make_payment_path, class: 'btn btn-success' %>
+  <%= link_to "Cancel", carts_path, class: 'btn btn-danger' %>
+</div>

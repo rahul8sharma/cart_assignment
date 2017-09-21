@@ -1,0 +1,16 @@
+<table class="table table-hover table-bordered">
+  <tr>
+    <th>Order ID</th>
+    <th>Created At</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.created_at.strftime("%d-%m-%y %H:%S") %></td>
+      <td><%= order.total_price %></td>
+      <td><%= link_to "View Details", order_path(order), class: 'btn btn-info' %></td>
+    </tr>
+  <% end %>
+</table>
